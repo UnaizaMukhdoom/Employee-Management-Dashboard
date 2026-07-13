@@ -15,6 +15,8 @@ A responsive, API-driven employee management dashboard built with Next.js. Pulls
 **Dashboard**
 ![Dashboard](./public/screenshots/dashboard-page.jpeg)
 
+![Dashboard](./public/screenshots/dashboard-page2.jpeg)
+
 **Employee Details Modal**
 ![Employee Modal](./public/screenshots/employee-modal.jpeg)
 
