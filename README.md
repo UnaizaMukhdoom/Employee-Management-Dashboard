@@ -14,11 +14,8 @@ A responsive, API-driven employee management dashboard built with Next.js. Pulls
 3. [Project Structure](#project-structure)
 4. [Getting Started](#getting-started)
 5. [Environment Variables](#environment-variables)
-6. [Available Scripts](#available-scripts)
-7. [How It Works](#how-it-works)
-8. [State Management Decisions](#state-management-decisions)
-9. [Known Limitations](#known-limitations)
-10. [Deployment](#deployment)
+6. [Deployment](#deployment)
+
 
 ---
 
