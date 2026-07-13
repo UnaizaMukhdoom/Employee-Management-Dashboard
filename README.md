@@ -6,8 +6,17 @@ A responsive, API-driven employee management dashboard built with Next.js. Pulls
 
 **Live demo:** https://employee-management-dashboard-olive.vercel.app/
 
-
 ---
+## Screenshots
+
+**Landing Page**
+![Landing Page](./public/screenshots/landing-page.jpeg)
+
+**Dashboard**
+![Dashboard](./public/screenshots/dashboard-page.jpeg)
+
+**Employee Details Modal**
+![Employee Modal](./public/screenshots/employee-modal.jpeg)
 
 ## Table of Contents
 
