@@ -1,8 +1,4 @@
-"use client";
-
-import { useRef, useState } from "react";
 import Link from "next/link";
-
 
 const pageStyles = `
   .animated-gradient {
@@ -32,7 +28,6 @@ const pageStyles = `
   .fade-up { animation: fadeUp 0.9s ease-out both; }
 `;
 
-
 function FloatingIcons() {
   return (
     <>
@@ -54,7 +49,6 @@ function StatusBadge() {
   );
 }
 
-// Title, subtitle, and the "Go to Dashboard" button
 function HeroText() {
   return (
     <>
@@ -68,6 +62,7 @@ function HeroText() {
       <p className="text-sm text-purple-200 mb-8 max-w-xs mx-auto leading-relaxed">
         Manage employees smarter.
       </p>
+
 
       <Link
         href="/dashboard"
@@ -119,22 +114,20 @@ function MockupContent() {
   );
 }
 
-// The skeleton of dashboard with tilted effect
-function DashboardMockup({ tilt }) {
+// The skeleton of dashboard 
+function DashboardMockup() {
   const mockupStyle = {
     background: "rgba(24, 24, 27, 0.55)",
     backdropFilter: "blur(12px)",
     border: "0.5px solid rgba(255,255,255,0.15)",
     boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
-    transform: `rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)`,
-    transition: "transform 0.15s ease-out",
     width: "100%",
     maxWidth: "600px",
-    margin: "0 auto"
+    margin: "0 auto",
   };
 
   return (
-    <div className="relative mt-12" style={{ perspective: "800px" }}>
+    <div className="relative mt-12">
       <div className="absolute -inset-8 bg-blue-500 rounded-full blur-3xl opacity-20 pointer-events-none" />
 
       <div className="relative float-slow rounded-xl overflow-hidden" style={mockupStyle}>
@@ -145,51 +138,16 @@ function DashboardMockup({ tilt }) {
   );
 }
 
-function calculateTilt(mouseEvent, containerElement) {
-  const box = containerElement.getBoundingClientRect();
-
-
-  const mouseXFraction = (mouseEvent.clientX - box.left) / box.width;
-  const mouseYFraction = (mouseEvent.clientY - box.top) / box.height;
-
-  
-  const xOffset = mouseXFraction - 0.5;
-  const yOffset = mouseYFraction - 0.5;
-
-  
-  return {
-    x: xOffset * 10,
-    y: yOffset * -10
-  };
-}
-
 export default function LandingPage() {
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const containerRef = useRef(null);
-
-  function handleMouseMove(mouseEvent) {
-    const newTilt = calculateTilt(mouseEvent, containerRef.current);
-    setTilt(newTilt);
-  }
-
-  function handleMouseLeave() {
-    setTilt({ x: 0, y: 0 });
-  }
-
   return (
-    <div
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 py-20 animated-gradient"
-    >
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 py-20 animated-gradient">
       <style>{pageStyles}</style>
 
       <FloatingIcons />
 
       <div className="relative text-center max-w-xl fade-up">
         <HeroText />
-        <DashboardMockup tilt={tilt} />
+        <DashboardMockup />
       </div>
     </div>
   );
