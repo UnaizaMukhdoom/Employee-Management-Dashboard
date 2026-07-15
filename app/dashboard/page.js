@@ -18,28 +18,23 @@ const PAGE_SIZE = 5;
 
 // The top bar humburger icon
 function TopBar({ isDark, onOpenSidebar, onToggleDark }) {
-  function handleAddEmployeeClick() {
-    alert(
-      "This is a demo dashboard using a read-only API, so new employees can't be permanently saved. This button shows where that feature would go in a real app."
-    );
-  }
-
   return (
     <div className="flex items-center justify-between mb-1">
       <div className="flex items-center gap-3">
         <button onClick={onOpenSidebar} className="md:hidden text-gray-600">
           ☰
         </button>
-        <h1 className="text-xl md:text-2xl font-semibold">Employee Dashboard</h1>
+
+        <h1 className="text-xl md:text-2xl font-semibold">
+          Employee Dashboard
+        </h1>
       </div>
+
       <div className="flex items-center gap-3">
-        <DarkModeToggle isDark={isDark} onToggle={onToggleDark} />
-        <button
-          onClick={handleAddEmployeeClick}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700"
-        >
-          + Add Employee
-        </button>
+        <DarkModeToggle 
+          isDark={isDark} 
+          onToggle={onToggleDark} 
+        />
       </div>
     </div>
   );
@@ -84,13 +79,10 @@ function PageFooter({ isDark }) {
   );
 }
 
-function LoadingScreen({ isSidebarOpen, onCloseSidebar }) {
+function LoadingScreen() {
   return (
-    <div className="flex bg-gray-50">
-      <Sidebar isOpen={isSidebarOpen} onClose={onCloseSidebar} />
-      <div className="flex-1 p-4 md:p-8 min-h-screen bg-gray-50">
-        <Loader />
-      </div>
+    <div className="flex-1 p-4 md:p-8 min-h-screen bg-gray-50">
+      <Loader />
     </div>
   );
 }
@@ -166,12 +158,11 @@ export default function DashboardPage() {
   }
 
   function toggleDarkMode() {
-    setIsDark(!isDark);
-  }
-
+  setIsDark((previousMode) => !previousMode);
+}
   if (loading) {
-    return <LoadingScreen isSidebarOpen={isSidebarOpen} onCloseSidebar={closeSidebar} />;
-  }
+  return <LoadingScreen />;
+}
 
   if (error) {
     return <ErrorState message={error} onRetry={refetch} />;
